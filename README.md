@@ -24,7 +24,7 @@ Entwicklung eines Fitness-Trackers auf Basis des ESP32-C3, der Bewegungsdaten, P
 ## Mögliche Erweiterungen (optional)
 - Kommunikation mit einem Smartphone per Bluetooth oder WLAN zur Anzeige der Daten in einer App
 - Bereitstellung eines Webservers auf dem ESP32, um die Daten direkt im Browser zu visualisieren
-- GPS-basierte Geschwindigkeit und Streckenaufzeichnung (optional)
+- GPS-basierte Geschwindigkeit und Streckenaufzeichnung
 
 ## Entwicklung und Build
 Zum Kompilieren und Flashen wird die ESP-IDF verwendet. Die üblichen Schritte sind:
