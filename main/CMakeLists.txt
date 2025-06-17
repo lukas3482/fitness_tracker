@@ -1,0 +1,16 @@
+idf_component_register(
+    SRCS
+        "main.c"
+        "bus/bus.c"
+        "ui/ui.c"
+        "max30102/max30102.c"
+        "icm42688/icm42688.c"
+        "sd_card/sdcard.c"
+    INCLUDE_DIRS
+        "."
+        "ui"
+        "max30102"
+        "icm42688"
+        "bus"
+        "sd_card"
+)
