@@ -3,8 +3,7 @@
 Dieses Projekt realisiert einen Fitness-Tracker, der verschiedene Sensordaten erfasst und lokal auf einer SD-Karte speichert. Die gesammelten Werte werden zudem auf einem OLED-Display dargestellt.
 
 ## Projektziel
-Entwicklung eines Fitness-Trackers auf Basis des ESP32-C3, der Bewegungsdaten, Puls, SpO2
-und GPS-Position erfasst, auf einer SD-Karte im „.csv“ Format speichert und auf dem OLEDDisplay visualisiert.
+Entwicklung eines Fitness-Trackers auf Basis des ESP32-C3, der Bewegungsdaten, Puls und SpO2, auf einer SD-Karte im „.csv“ Format speichert und auf dem OLEDDisplay visualisiert.
 
 ## Hardware
 | Komponente                | Funktion                                      |
