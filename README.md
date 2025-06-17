@@ -11,10 +11,8 @@ Entwicklung eines Fitness-Trackers auf Basis des ESP32-C3, der Bewegungsdaten, P
 | **ESP32-C3 Devboard**     | Zentrale Steuerung                            |
 | **MAX30102** (extern)     | Puls- und SpO2-Messung                        |
 | **ICM-42688-P**           | Beschleunigungssensor (auf dem Devboard)      |
-| **NEO-6M GPS** (extern)   | GPS-Koordinaten, Geschwindigkeit, Strecke     |
 | **SD-Karte**              | Lokale Speicherung aller Daten (CSV)          |
 | **OLED-Display**          | Anzeige von Puls, SpO2 und weiteren Werten    |
-| **WS2812-LEDs**           | Visuelles Feedback, z. B. bei erfolgreicher GPS-Verbindung |
 
 ## Funktionen
 - Schrittzähler
