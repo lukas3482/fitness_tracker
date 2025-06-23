@@ -19,6 +19,7 @@
 #include "sdcard.h"
 
 static const char *TAG = "app";
+#define DEBUG false
 
 // Pin Definitionen
 #define I2C_PORT 0
@@ -115,21 +116,23 @@ void app_main(void){
     tLastLog = xTaskGetTickCount();
 
     while (true) {
+        // Puls und SpO2 Messung
         uint32_t redValue, irValue;
         max30102ReadFifo(&max, &redValue, &irValue);
         addtoBuffer(redValue, irValue);
         max30102Compute(redBuf, irBuf, 400, &spo2, &bpm);
 
-
+        // Schrittzähler
         icm42688ReadAccel(&icm);
-        float g = sqrtf((float)icm.ax * icm.ax +
-                        (float)icm.ay * icm.ay +
-                        (float)icm.az * icm.az) / 16384.0f;
-        //ESP_LOGI(TAG, "g = %.2f", g);
+        if(DEBUG){
+            float g = sqrtf((float)icm.ax * icm.ax +
+                            (float)icm.ay * icm.ay +
+                            (float)icm.az * icm.az) / 16384.0f;
+            ESP_LOGI(TAG, "g = %.2f", g);
+        }
         icm42688StepDetect(&icm, &steps);
-        
-
-
+    
+        // Buttons
         if (btnRstFlag) {
             btnRstFlag = false;
             sdcardRotateSteps();
@@ -144,7 +147,7 @@ void app_main(void){
             ESP_LOGI(TAG, "Alle Schritt Daten von SD-Karte geloescht.");
         }
 
-        // Update UI
+        // UI
         if (lvgl_port_lock(portMAX_DELAY)) {
             uiSetSteps(&ui, steps);
             uiSetHr(&ui, bpm);
@@ -157,7 +160,7 @@ void app_main(void){
             lvgl_port_unlock();
         }
 
-        //Schreibe die gezählten Schritte der letzten Minute auf die SD-Karte
+        // Schreibe die gezählten Schritte der letzten Minute auf die SD-Karte
         if (sd_ok && xTaskGetTickCount() - tLastLog >= pdMS_TO_TICKS(60000)) {
             sdcardLogSteps(steps - stepsLastLog);
             stepsLastLog = steps;
